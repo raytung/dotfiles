@@ -2,11 +2,7 @@
 
 set -e
 
-if [[ -z "${HOME}" ]]; then
-  exit 1
-fi
-
-cd "${HOME}" || exit 1
+cd "$(dirname "$0")" || exit 1
 
 echo "--- $(date) Installing NixOS"
 ./install_nix.sh

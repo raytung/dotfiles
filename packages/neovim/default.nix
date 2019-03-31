@@ -9,6 +9,7 @@ nixpkgs.neovim.override {
     [
       deoplete-nvim
       rust-vim
+      deoplete-rust
       vim-go
       nerdtree
       vim-commentary
