@@ -16,5 +16,10 @@ rec {
   git = nixpkgs.git;
   strace = nixpkgs.strace;
   shellcheck = nixpkgs.shellcheck;
+  python = nixpkgs.python3;
+  pip = nixpkgs.pipenv;
+  vlc = nixpkgs.vlc;
+  transmission = nixpkgs.transmission;
+  wireshark = nixpkgs.wireshark;
 }
 

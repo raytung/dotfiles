@@ -1,13 +1,15 @@
 filetype plugin indent on
 syntax enable
 
-set tabstop=4 softtabstop=0 expandtab shiftwidth=2 smarttab
+set tabstop=2 softtabstop=2 expandtab shiftwidth=2 smarttab hlsearch
 set nu
+set t_Co=256
 set laststatus=2
+set autowrite
+set hidden
 
 " --- Rust
 let g:rustfmt_autosave = 1
-let g:racer_cmd = "/Users/raytung/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
 au FileType rust nmap gd <Plug>(rust-def)
 au FileType rust nmap <leader>gd <Plug>(rust-doc)
@@ -16,7 +18,18 @@ let g:deoplete#sources#rust#rust_source_path='/home/ray/.rustup/toolchains/stabl
 let g:deoplete#sources#rust#show_duplicates=1
 let g:deoplete#sources#rust#documentation_max_height=20
 
-let g:deoplete#enable_at_startup = 1
+" --- Deoplete
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" --- Better Whitespace
+autocmd BufWritePre,FileWritePost * StripWhitespace
+inoremap {<CR> {<CR>}<Esc>O<BS><Tab>
+
+" --- Golang
+let g:go_fmt_command = "goimports"
 
 " --- NerdTree
 " open a NERDTree automatically when vim starts up if no files were specified
@@ -38,7 +51,6 @@ map <C-n> :NERDTreeToggle<CR>
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:Powerline_symbols = 'fancy'
-let g:airline#extensions#tabline#enabled = 1
 
 " --- CtrlP
 if executable('rg')
@@ -79,3 +91,5 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
 if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
+
+let g:deoplete#enable_at_startup = 1
