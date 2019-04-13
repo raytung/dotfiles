@@ -21,5 +21,6 @@ rec {
   vlc = nixpkgs.vlc;
   transmission = nixpkgs.transmission;
   wireshark = nixpkgs.wireshark;
+  aws-cli = nixpkgs.awscli;
 }
 
