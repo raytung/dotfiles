@@ -22,5 +22,13 @@ rec {
   transmission = nixpkgs.transmission;
   wireshark = nixpkgs.wireshark;
   aws-cli = nixpkgs.awscli;
+  gcloud = nixpkgs.google-cloud-sdk;
+  containerd = nixpkgs.containerd;
+  yarn = nixpkgs.yarn;
+  openjdk = nixpkgs.openjdk;
+  ruby = nixpkgs.ruby;
+  gimp = nixpkgs.gimp;
+  imagemagick = nixpkgs.imagemagick;
+  alacritty = nixpkgs.alacritty;
 }
 
