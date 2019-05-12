@@ -29,6 +29,8 @@ rec {
   ruby = nixpkgs.ruby;
   gimp = nixpkgs.gimp;
   imagemagick = nixpkgs.imagemagick;
-  alacritty = nixpkgs.alacritty;
+  cmake = nixpkgs.cmake;
+  protoc = nixpkgs.protobuf;
+  docker-compose = nixpkgs.docker-compose;
 }
 
