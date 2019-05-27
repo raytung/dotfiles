@@ -1,18 +1,29 @@
 #!/bin/bash
 
 set -e
+set -o pipefail
 
-cd "$(dirname "$0")" || exit 1
+cd "$(dirname "$0")"
 
-echo "--- $(date) Installing NixOS"
-# ./install_nix.sh
+source ./functions.sh
 
-# nix-channel --update nixpkgs
 
-# nix-env -u
-
-NIXPKGS_ALLOW_UNFREE=1 nix-env --install --file ./packages/default.nix --show-trace
-
-echo "--- $(date) Installing system services"
-[[ -n "${SKIP_DOCKER}" ]] || ./packages/docker/install.sh
-[[ -n "${SKIP_KVM}" ]] || ./packages/kvm2/install.sh
+echo "--- $(date) Installing apt packages"
+sudo apt update --yes
+install_pkg \
+  pkg-config \
+  zip \
+  unzip \
+  g++ \
+  zlib1g-dev \
+  python3 \
+  curl \
+  git \
+  golang \
+  rustup \
+  tree \
+  shellcheck \
+  wireshark \
+  neovim \
+  docker \
+  diff-so-fancy

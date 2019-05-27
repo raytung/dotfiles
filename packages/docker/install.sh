@@ -1,27 +1,42 @@
 #!/bin/bash
 
-sudo apt-get -qqy install \
+set -eu
+set -o pipefail
+
+cd "$(dirname "$0")"
+
+source ../../functions.sh
+
+install_pkg \
     apt-transport-https \
     ca-certificates \
     gnupg-agent \
     software-properties-common
 
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+DOCKER_FINGERPRINT="0EBFCD88"
+DOCKER_APT_REPO="deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+ESCAPED_DOCKER_APT_REPO="$(printf "%q" "${DOCKER_APT_REPO}")"
+DOCKER_APT_REPO_STATUS="$(grep "${ESCAPED_DOCKER_APT_REPO}" /etc/apt/sources.list)"
 
-sudo apt-key fingerprint 0EBFCD88
+if [ "${DOCKER_APT_REPO_STATUS}" == "" ]; then
+  sudo add-apt-repository "${DOCKER_APT_REPO}"
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+  sudo apt-key fingerprint "${DOCKER_FINGERPRINT}"
 
-sudo add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-   $(lsb_release -cs) \
-   stable"
+  sudo apt-get -qqy update
+fi
 
-sudo apt-get -qqy update
-sudo apt-get -qqy install \
-  docker-ce \
-  docker-ce-cli \
-  containerd.io
+install_pkg docker-ce docker-ce-cli containerd.io
 
-sudo groupadd docker
-sudo usermod -aG docker "$(whoami)"
+DOCKER_GROUP_NAME="docker"
+DOCKER_GROUP_STATUS="$(grep "${DOCKER_GROUP_NAME}" /etc/group)"
+if [ "${DOCKER_GROUP_STATUS}" == "" ]; then
+  sudo groupadd docker
+fi
 
-newgrp - docker
+USER_GROUPS_STATUS="$(groups "$(whoami)") | grep \"${DOCKER_GROUP_NAME}\""
+if [ "${USER_GROUPS_STATUS}" == "" ]; then
+  sudo usermod -aG "${DOCKER_GROUP_NAME}" "$(whoami)"
+  newgrp - docker
+fi
+
