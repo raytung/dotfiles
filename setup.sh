@@ -9,7 +9,8 @@ source ./functions.sh
 
 
 echo "--- $(date) Installing apt packages"
-sudo apt update --yes
+[ -n "${SKIP_UPDATE}" ] || sudo apt update --yes
+
 install_pkg \
   pkg-config \
   zip \
@@ -26,4 +27,7 @@ install_pkg \
   wireshark \
   neovim \
   docker \
-  diff-so-fancy
+  diff-so-fancy \
+  jq \
+  tree \
+  strace

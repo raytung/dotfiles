@@ -3,5 +3,5 @@
 cd "$(dirname "$0")"
 
 if [ "$(which rustup)" == "" ]; then
-    ./setup.sh
+    ./setup.sh -y
 fi

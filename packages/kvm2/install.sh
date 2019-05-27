@@ -1,7 +1,6 @@
 #!/bin/bash
 
-apt-get install -qqy \
-  libvirt-clients \
+install_pkg libvirt-clients \
   libvirt-daemon-system \
   qemu-kvm
 

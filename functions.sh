@@ -1,12 +1,19 @@
 #!/bin/bash
 
-set -eu
+set -e
 set -o pipefail
 
 is_custom_pkg() {
   local pkg_name="$1"
 
   [ -x "$(dirname "$0")/packages/${pkg_name}/install.sh" ]
+}
+
+apt_install() {
+  local APT_STATUS=$(dpkg-query --show --showformat='${Status}' "$1" | grep "install ok installed")
+  if [ "" == "${APT_STATUS}" ]; then
+      sudo apt install --yes "$1"
+  fi
 }
 
 install_pkg() {
@@ -19,10 +26,6 @@ install_pkg() {
       continue
     fi
 
-    local APT_STATUS=$(dpkg-query --show --showformat='${Status}' "${pkg}" | grep "install ok installed")
-
-    if [ "" == "${APT_STATUS}" ]; then
-      sudo apt install --yes "${pkg}"
-    fi
+    apt_install "${pkg}"
   done
 }
