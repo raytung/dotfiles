@@ -98,6 +98,7 @@ export SSH_KEY_PATH="~/.ssh/id_rsa"
 
 export GOPATH="${HOME}/Code/gopath"
 export PATH="${PATH}:${HOME}/Code/flutter/bin"
+export PATH="${PATH}:${HOME}/Code/dotfiles/bin"
 
 export VISUAL=vim
 export EDITOR="$VISUAL"
