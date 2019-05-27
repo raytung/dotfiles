@@ -12,6 +12,7 @@ echo "--- $(date) Installing apt packages"
 [ -n "${SKIP_UPDATE}" ] || sudo apt update --yes
 
 install_pkg \
+  zsh \
   pkg-config \
   zip \
   unzip \
