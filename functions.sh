@@ -9,9 +9,13 @@ is_custom_pkg() {
   [ -x "$(dirname "$0")/packages/${pkg_name}/install.sh" ]
 }
 
+apt_installed() {
+   local APT_STATUS=$(dpkg-query --show --showformat='${Status}' "$1" | grep "install ok installed")
+   [ "" != "${APT_STATUS}" ]
+}
+
 apt_install() {
-  local APT_STATUS=$(dpkg-query --show --showformat='${Status}' "$1" | grep "install ok installed")
-  if [ "" == "${APT_STATUS}" ]; then
+  if ! apt_installed "$1"; then
       sudo apt install --yes "$1"
   fi
 }

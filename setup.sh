@@ -31,4 +31,6 @@ install_pkg \
   diff-so-fancy \
   jq \
   tree \
-  strace
+  strace \
+  nodejs \
+  yarn
