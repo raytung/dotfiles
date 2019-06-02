@@ -26,7 +26,7 @@ custom_apt_repo_exists() {
 
 	local repo_esc="$(printf "%q" "${repo}")"
 
-  [ -f ${source_list_path} ] && [ "" != "$(grep "${repo_esc} "${source_list_path})" ]
+  [ -f ${source_list_path} ] && [ "" != "$(grep ${repo_esc} ${source_list_path})" ]
 }
 
 install_pkg() {
