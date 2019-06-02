@@ -26,7 +26,12 @@ if [ "${DOCKER_APT_REPO_STATUS}" == "" ]; then
   sudo apt-get -qqy update
 fi
 
-install_pkg docker-ce docker-ce-cli containerd.io
+apt_install docker-ce docker-ce-cli containerd.io
+
+if ! [ -L "${HOME}/.docker/config.json" ]; then
+  ABS_PATH="$(readlink -f ./config.json)"
+  ln --symbolic "${ABS_PATH}" "${HOME}/.docker/config.json"
+fi
 
 DOCKER_GROUP_NAME="docker"
 DOCKER_GROUP_STATUS="$(grep "${DOCKER_GROUP_NAME}" /etc/group)"
