@@ -20,6 +20,15 @@ apt_install() {
   fi
 }
 
+custom_apt_repo_exists() {
+	local repo="$1"
+	local source_list_path="$2"
+
+	local repo_esc="$(printf "%q" "${repo}")"
+
+  [ -f ${source_list_path} ] && [ "" != "$(grep "${repo_esc} "${source_list_path})" ]
+}
+
 install_pkg() {
   for pkg in ${@}; do
     echo "--- $(date) Installing ${pkg}"

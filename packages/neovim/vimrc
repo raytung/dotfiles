@@ -38,6 +38,8 @@ if dein#load_state('~/.vim/bundles')
   call dein#add('ntpeters/vim-better-whitespace')
   call dein#add('airblade/vim-gitgutter')
 
+  call dein#add('JaySandhu/xcode-vim')
+
   call dein#end()
   call dein#save_state()
 endif
@@ -52,6 +54,7 @@ set t_Co=256
 set laststatus=2
 set autowrite
 set hidden
+" colorscheme nord
 
 " --- Rust
 let g:rustfmt_autosave = 1

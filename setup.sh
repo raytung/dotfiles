@@ -33,4 +33,6 @@ install_pkg \
   tree \
   strace \
   nodejs \
-  yarn
+  yarn \
+  nord-gnome-terminal \
+  google-cloud-sdk
