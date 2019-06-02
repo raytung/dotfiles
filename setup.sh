@@ -35,4 +35,5 @@ install_pkg \
   nodejs \
   yarn \
   nord-gnome-terminal \
-  google-cloud-sdk
+  google-cloud-sdk \
+  terraform
