@@ -37,4 +37,5 @@ install_pkg \
   yarn \
   nord-gnome-terminal \
   google-cloud-sdk \
-  terraform
+  terraform \
+  awscli
