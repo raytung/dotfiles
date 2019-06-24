@@ -19,6 +19,7 @@ install_pkg \
   g++ \
   zlib1g-dev \
   python3 \
+  python3-pip \
   curl \
   git \
   golang \
