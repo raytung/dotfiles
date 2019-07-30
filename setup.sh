@@ -22,6 +22,7 @@ install_pkg \
   python3-pip \
   curl \
   git \
+  mercurial \
   golang \
   rustup \
   tree \
