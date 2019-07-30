@@ -39,4 +39,5 @@ install_pkg \
   nord-gnome-terminal \
   google-cloud-sdk \
   terraform \
-  awscli
+  awscli \
+  thefuck
