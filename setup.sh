@@ -40,4 +40,5 @@ install_pkg \
   google-cloud-sdk \
   terraform \
   awscli \
-  thefuck
+  thefuck \
+  shellcheck
