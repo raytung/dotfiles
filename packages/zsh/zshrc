@@ -141,13 +141,13 @@ aws-creds() {
   local id="$(aws configure get aws_access_key_id --profile "${profile}")"
   if [ "${id}" = "" ]; then
     echo "Unable to get aws access key id"
-    exit 1
+    return 1
   fi
 
   local key="$(aws configure get aws_secret_access_key --profile "${profile}")"
   if [ "${key}" = "" ]; then
     echo "Unable to get aws secret access key"
-    exit 1
+    return 1
   fi
 
   export AWS_ACCESS_KEY_ID="${id}"
@@ -156,3 +156,5 @@ aws-creds() {
 
 source ~/.zshrc.private
 eval $(thefuck --alias crap)
+
+eval $(thefuck --alias)
