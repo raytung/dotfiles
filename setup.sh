@@ -12,6 +12,9 @@ echo "--- $(date) Installing apt packages"
 [ -n "${SKIP_UPDATE}" ] || sudo apt update --yes
 
 install_pkg \
+  build-essential \
+  ca-certificates \
+  xclip \
   zsh \
   pkg-config \
   zip \
@@ -41,4 +44,6 @@ install_pkg \
   terraform \
   awscli \
   thefuck \
-  shellcheck
+  shellcheck \
+  libssl-dev \
+  slack-desktop
