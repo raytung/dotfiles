@@ -46,4 +46,5 @@ install_pkg \
   thefuck \
   shellcheck \
   libssl-dev \
-  slack-desktop
+  slack-desktop \
+  fonts-powerline
