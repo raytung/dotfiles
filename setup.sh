@@ -47,4 +47,5 @@ install_pkg \
   shellcheck \
   libssl-dev \
   slack-desktop \
-  fonts-powerline
+  fonts-powerline \
+  kubectl
