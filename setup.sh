@@ -48,4 +48,5 @@ install_pkg \
   libssl-dev \
   slack-desktop \
   fonts-powerline \
-  kubectl
+  kubectl \
+  signal-desktop
