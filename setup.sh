@@ -44,9 +44,11 @@ install_pkg \
   terraform \
   awscli \
   thefuck \
-  shellcheck \
   libssl-dev \
   slack-desktop \
   fonts-powerline \
   kubectl \
-  signal-desktop
+  signal-desktop \
+  tilix \
+  htop \
+  moreutils
