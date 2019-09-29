@@ -51,4 +51,5 @@ install_pkg \
   signal-desktop \
   tilix \
   htop \
-  moreutils
+  moreutils \
+  google-chrome-stable
