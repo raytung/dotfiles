@@ -1,8 +1,14 @@
 [user]
 	name = Ray Tung
-	email = code@raytung.net
+  email = code@raytung.net
+  signingkey = EA8A5C2C577B998D
+[includeIf "gitdir:~/src/github.com/kasada/"]
+  path = ~/.gitconfig.work
+[includeIf "gitdir:~/src/bitbucket.org/kasada/"]
+  path = ~/.gitconfig.work
 [core]
 	pager = diff-so-fancy | less --tabs=4 -RFX
+	excludesfile = /home/raytung/.config/.gitignore
 [color]
 	ui = true
 [color "diff-highlight"]
@@ -16,4 +22,8 @@
 	commit = yellow bold
 	old = red bold
 	new = green bold
-	whitespace = red reverse
+  whitespace = red reverse
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[commit]
+	gpgsign = true
